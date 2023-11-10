@@ -40,19 +40,19 @@ const messages = {
 			title: 'STEREOtype',
 			subtitle: 'por Tom Quinn para Ludum Dare 41',
 			description: 'digite cada palavra no tempo da batida',
-			play: 'JOGAR'
+			play: 'PLAY'
 	},
 	dt: {
 			title: 'STEREOtyp',
 			subtitle: 'von Tom Quinn für Ludum Dare 41',
 			description: 'tippen Sie jedes Wort im Takt',
-			play: 'SPIELEN'
+			play: 'PLAY'
 	},
 	es: {
 			title: 'STEREOtype',
 			subtitle: 'por Tom Quinn para Ludum Dare 41',
 			description: 'escribe cada palabra al ritmo de la música',
-			play: 'JUGAR'
+			play: 'PLAY'
 	}
 };
 
@@ -578,14 +578,20 @@ function updateAndDrawBackground() {
 		ctx.stroke();
 	}
 	ctx.restore();
+	
 }
-function drawUI() {
-	// Score.
+
+
+function drawScore() {
+		// Score.
 	ctx.textAlign = 'left';
 	ctx.textBaseline = 'alphabetic';
 	ctx.fillStyle = GFX_WORD_OVER_COLOR;
 	ctx.font = GFX_UI_FONT_SIZE + 'px Cambo';
 	ctx.fillText('Score: ' + score, GFX_UI_PADDING, canvas.height - GFX_UI_PADDING);
+}
+
+function drawTimeSignature() {
 	// Time signature.
 	ctx.textBaseline = 'hanging';
 	ctx.font = GFX_UI_FONT_SIZE * .25 * GFX_UI_TIME_SIGNATURE_SCALING + 'px Cambo';
@@ -599,7 +605,10 @@ function drawUI() {
 	ctx.font = GFX_UI_FONT_SIZE * .4 * GFX_UI_TIME_SIGNATURE_SCALING + 'px Cambo';
 	ctx.fillText(pattern.measureLength, GFX_UI_PADDING + GFX_UI_TIME_SIGNATURE_SCALING * 38, clefTop + GFX_UI_TIME_SIGNATURE_SCALING * 12.5);
 	ctx.fillText(4, GFX_UI_PADDING + GFX_UI_TIME_SIGNATURE_SCALING * 38, clefTop + GFX_UI_TIME_SIGNATURE_SCALING * 30);
-	// Fail boxes.
+}
+
+function drawFailBoxes() {
+  // Fail boxes.
 	let failBoxMargin = GFX_UI_FAIL_BOX_SIZE * (1 - GFX_WORD_BOX_SYMBOL_SCALE) / 2;
 	for (let i = 0; i < GAME_MAX_FAILS; i++) {
 		let x = GFX_UI_PADDING + GFX_UI_FAIL_BOX_SPACING * i, y = canvas.height * .875;
@@ -619,7 +628,10 @@ function drawUI() {
 			ctx.stroke();
 		}
 	}
-	// Restart text.
+}
+
+
+function drawRestartText() {
 	if (fails == GAME_MAX_FAILS) {
 		let overText = 'RESTART'.substring(0, restartCount);
 		let baseText = 'RESTART'.substring(restartCount, 7);
@@ -631,6 +643,13 @@ function drawUI() {
 		ctx.fillStyle = GFX_WORD_BASE_COLOR;
 		ctx.fillText(baseText, GFX_UI_PADDING + overTextWidth, canvas.height * .85);
 	}
+}
+
+function drawUI() {
+  drawScore();
+  drawTimeSignature();
+  drawFailBoxes();
+  drawRestartText();
 }
 
 function levelUp() {
