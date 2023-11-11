@@ -709,22 +709,6 @@ window.addEventListener('keydown', function (e) {
 	}
 });
 
-// Função para mostrar botão de "restart"
-function showRestartButton() {
-	const restartButton = document.getElementById('restart-button');
-	restartButton.style.display = 'block';
-  }
-  
-  if (jogadorPerdeu) {
-	showRestartButton();
-  }
-  
-  // Adiciona um manipulador de eventos ao botão de "restart"
-  const restartButton = document.getElementById('restart-button');
-  restartButton.addEventListener('click', () => {
-	// ## Código para reiniciar o jogo ##
-  });
-
 
 
 
