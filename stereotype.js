@@ -11,19 +11,19 @@ const messages = {
 			title: 'STEREOtype',
 			subtitle: 'por Tom Quinn para Ludum Dare 41',
 			description: 'digite cada palavra no tempo da batida',
-			play: 'JOGAR'
+			play: 'PLAY'
 	},
 	dt: {
 			title: 'STEREOtyp',
 			subtitle: 'von Tom Quinn für Ludum Dare 41',
 			description: 'tippen Sie jedes Wort im Takt',
-			play: 'SPIELEN'
+			play: 'PLAY'
 	},
 	es: {
 			title: 'STEREOtype',
 			subtitle: 'por Tom Quinn para Ludum Dare 41',
 			description: 'escribe cada palabra al ritmo de la música',
-			play: 'JUGAR'
+			play: 'PLAY'
 	}
 };
 
@@ -31,8 +31,6 @@ function updateLanguage(newLang) {
 	lang = newLang;
 	setup();
 }
-
-var { canvas, GFX_WORD_BASE_COLOR, GFX_WORD_SCALE, GFX_WORD_OFFSET_X, GFX_WORD_UNDERLINE_STROKE, GFX_WORD_UNDERLINE_DASH, GFX_WORD_BOX_SCALE, GFX_WORD_BOX_STROKE, GFX_WORD_BOX_OFFSET_X, GFX_WORD_BOX_OFFSET_Y, GAME_OK_OFFSET_SECONDS, GAME_PERFECT_OFFSET_SECONDS, GFX_WORDLINE_LETTER_TWIST_MULTIPLIER, GFX_WORD_FLIP_OFFSET_CHANCE, GFX_WORD_BOX_SHIFT_FACTOR, GFX_WORD_OVER_COLOR, GAME_AUTOPLAY, GFX_WORD_BOX_SYMBOL_SCALE, GFX_WORD_BOX_CHECK_COLOR, GFX_WORD_BOX_X_COLOR, GFX_WORD_BOX_SYMBOL_STROKE, GAME_STARTING_BPM, GAME_WORDS_PER_LEVEL, GAME_RESTS_PER_LEVEL, GFX_WORDLINE_PUSHDOWN_FRAMES, GFX_WORDLINE_OFFSET_Y, GFX_WORDLINE_FADEOUT_RATE, ctx, GAME_MAX_FAILS, GAME_BPM_CHANGE_RATE, GFX_BACKGROUND_COLOR, GFX_BACKGROUND_BEAT_COLOR, GFX_BACKGROUND_GRID_BUMP, GFX_BACKGROUND_GRID_SCROLL_X, GFX_BACKGROUND_GRID_SPACING, GFX_BACKGROUND_GRID_SCROLL_Y, GFX_BACKGROUND_GRID_COLOR, GFX_BACKGROUND_GRID_STROKE, GFX_BACKGROUND_GRID_ANGLE, GFX_UI_FONT_SIZE, GFX_UI_PADDING, GFX_UI_TIME_SIGNATURE_SCALING, GFX_UI_FAIL_BOX_SIZE, GFX_UI_FAIL_BOX_SPACING, GFX_UI_FAIL_BOX_STROKE } = CanvaGame();
 
 var kick = new Tone.MembraneSynth({
 	'pitchDecay': 0.02,
@@ -574,6 +572,8 @@ function updateAndDrawBackground() {
 	}
 	ctx.restore();
 }
+
+
 function drawUI() {
 	// Pontuação
 	ctx.textAlign = 'left';
@@ -627,7 +627,6 @@ function drawUI() {
 		ctx.fillText(baseText, GFX_UI_PADDING + overTextWidth, canvas.height * .85);
 	}
 }
-
 function levelUp() {
 	level++;
 	// Define os eventos para cada nível
