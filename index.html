@@ -9,20 +9,21 @@
             <button onclick="updateLanguage('es')">Español</button>
         </div>
         <div>
-            <button onclick="">Facil</button>
-            <button onclick="">Medio</button>
-            <button onclick="">dificil</button>
+            <button onclick="setGameSpeed(50,0)">Lento</button>
+            <button onclick="setGameSpeed(90,0)">Normal</button>
+            <button onclick="setGameSpeed(120,.02)">Rapido</button>
         </div>
     </div>
-    <title>Projeto de Manutenção de software - Davidson e Karolaine - Utfpr-dv</title>
+    <title>Projeto de Manutenção de Software - Davidson e Karolaine - UTFPR-DV</title>
     <link href="https://fonts.googleapis.com/css?family=Cambo" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css"> 
 </head>
 <body>
     <canvas id='gameCanvas'></canvas>
+    <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+    <script type="text/javascript" src="dictionary.js"></script>
+    <script type="text/javascript" src="util.js"></script>
+    <script type="text/javascript" src="stereotype.js"></script>
+
 </body>
-<script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
-<script type="text/javascript" src="dictionary.js"></script>
-<script type="text/javascript" src="util.js"></script>
-<script type="text/javascript" src="stereotype.js"></script>
 </html>

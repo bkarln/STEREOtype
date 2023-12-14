@@ -113,11 +113,11 @@ function CanvaGame() {
 
 	const GAME_AUTOPLAY = false;
 	const GAME_PERFECT_OFFSET_SECONDS = .075;
-	const GAME_OK_OFFSET_SECONDS = .15;
+	const GAME_OK_OFFSET_SECONDS = .5;
 	const GAME_WORDS_PER_LEVEL = 6;
 	const GAME_RESTS_PER_LEVEL = 2;
-	const GAME_STARTING_BPM = 120;
-	const GAME_BPM_CHANGE_RATE = .02;
+	let GAME_STARTING_BPM = 90; 
+	let GAME_BPM_CHANGE_RATE = 0;
 	const GAME_MAX_FAILS = 5;
 	const GFX_BACKGROUND_COLOR = '#FF7EA1'; // rosa claro
 	const GFX_BACKGROUND_BEAT_COLOR = '#30E1FF'; // Azul claro
@@ -415,6 +415,12 @@ class Tutorial {
 	finalize() { }
 }
 
+function setGameSpeed(bpm, bpmrate) {
+    GAME_STARTING_BPM = bpm;
+    GAME_BPM_CHANGE_RATE = bpmrate;
+    console.log("Velocidade do jogo definida para " + bpm + " BPM com taxa de alteração " + bpmrate);
+}
+
 var lastSeconds, pushdownFrames, level, wordsLeft, restsLeft, nextWordsLeft, nextRestsLeft, targetBPM, fails, restartCount, usedWords, pattern;
 
 // Função de configuração do jogo
@@ -429,7 +435,7 @@ function setup() {
 	lastSeconds = 0;
 	pushdownFrames = 0;
 	level = 0;
-	wordsLeft = GAME_WORDS_PER_LEVEL - 3;
+	wordsLeft = GAME_WORDS_PER_LEVEL - 2;
 	restsLeft = GAME_RESTS_PER_LEVEL;
 	nextWordsLeft = 0, nextRestsLeft = 0;
 	targetBPM = GAME_STARTING_BPM;
